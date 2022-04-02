@@ -23,3 +23,17 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
+
+/**
+ * Registration Route
+ */
+Route.get('/registration','AuthController.registrationIndex').as('auth.registration.form')
+Route.post('/registration','AuthController.registrationStore').as('auth.registration')
+
+
+/**
+ * Login Route
+ */
+Route.get('/login','AuthController.loginIndex').as('auth.login.form')
+Route.post('/login','AuthController.loginStore').as('auth.login')
+
