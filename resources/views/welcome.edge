@@ -90,6 +90,15 @@
       <p class="subtitle">
         Congratulations, you have just created your first AdonisJS app.
       </p>
+      <div>
+        @if (auth.user)
+          <a href="{{ route('auth.logout') }}">Logout</a>
+        @else        
+          <a href="{{ route('auth.login.form') }}">Login</a>
+          <a href="{{ route('auth.registration.form') }}">Registration</a>
+
+        @end
+      </div>
     </div>
   </main>
 </body>

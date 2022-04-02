@@ -20,8 +20,12 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async ({ view }) => {
-  return view.render('welcome')
+Route.get('/', async ({ view,auth }) => {
+  if(auth.isLoggedIn){
+    return view.render('welcome')
+  }
+  return view.render('auth.login');
+  
 })
 
 /**
@@ -37,3 +41,8 @@ Route.post('/registration','AuthController.registrationStore').as('auth.registra
 Route.get('/login','AuthController.loginIndex').as('auth.login.form')
 Route.post('/login','AuthController.loginStore').as('auth.login')
 
+
+/**
+ * Logout Route
+ */
+Route.get('logout','AuthController.logout').as('auth.logout')

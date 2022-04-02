@@ -41,6 +41,17 @@ export default class AuthController {
         return response.redirect('/');        
     }
 
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Login Controllers
      */
@@ -59,6 +70,24 @@ export default class AuthController {
             return response.redirect().back()
         }
         return response.redirect('/');
+    }
+    
+
+
+
+
+
+
+
+    
+
+    /**
+     * Logut User
+     */
+    public async logout({response,auth}:HttpContextContract){
+        await auth.logout();
+
+        return response.redirect().toRoute('auth.login.form');
     }
     
 }
